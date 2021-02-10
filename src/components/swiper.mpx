@@ -1,0 +1,61 @@
+<template>
+  <view class="container">
+    <view class="page-body">
+      <view class="page-section page-section-spacing swiper">
+        <swiper
+          indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}"
+          interval="{{interval}}"
+          duration="{{duration}}"
+        >
+          <block wx:for="{{background}}" wx:key="*this">
+            <swiper-item>
+              <!-- <cover-image src="{{item}}"></cover-image> -->
+              <view class="swiper-item {{item}}">{{item}}</view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    background: [
+      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06446815665732977.jpg',
+      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06613364330041880.jpg',
+      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06589184942862093.jpg',
+      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06604775582393101.jpg',
+      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06645548035673015.jpg',
+      'demo-text-1',
+      'demo-text-2',
+      'demo-text-3'
+    ],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500
+  }
+})
+</script>
+
+<style lang="css" scoped>
+.swiper-item {
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+}
+.demo-text-1 {
+  background: pink;
+}
+.demo-text-2 {
+  background: purple;
+}
+.demo-text-3 {
+  background: lightblue;
+}
+</style>

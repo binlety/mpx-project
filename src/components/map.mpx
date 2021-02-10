@@ -1,0 +1,27 @@
+<template>
+  <map style="width: 100vw;margin:0 auto" latitude="{{latitude}}" longitude="{{longitude}}">
+    <cover-view class="cover-view">
+      <cover-view class="container">
+        <cover-view class="flex-wrp" style="flex-direction:row;">
+          <cover-view class="flex-item demo-text-1"></cover-view>
+          <cover-view class="flex-item demo-text-2"></cover-view>
+          <cover-view class="flex-item demo-text-3"></cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </map>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  data: {
+    latitude: 30.193873,
+    longitude: 120.21463
+  }
+})
+</script>
+
+<style lang="css" scoped>
+</style>

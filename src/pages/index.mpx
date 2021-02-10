@@ -1,0 +1,23 @@
+<template>
+  <swiper></swiper>
+  <menu></menu>
+  <list></list>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({
+  onLoad() {}
+})
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "swiper": "../components/swiper",
+      "menu": "../components/menu",
+      "list": "../components/list",
+    }
+  }
+</script>
