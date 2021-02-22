@@ -1,7 +1,54 @@
-<template>cart</template>
+
+<template>
+  <block wx:if="{{goodsList.length}}">
+    <view wx:for="{{goodsList}}">{{index+1}}: {{item.message}}</view>
+  </block>
+  <block wx:else>
+    <view class="no-godos-title">购物车空空如也~</view>
+    <button class="go-shop-btn" bindtap="goshopping">去逛逛</button>
+  </block>
+</template>
 
 <script>
 import { createPage } from '@mpxjs/core'
 
-createPage({})
+createPage({
+  data: {
+    goodsList: []
+    // goodsList: [{ message: '肉' }, { message: '蛋' }, { message: '奶' }]
+  },
+  methods: {
+    goshopping() {
+      wx.switchTab({
+        url: '/pages/index'
+      })
+    }
+  }
+})
 </script>
+
+<script type="application/json">
+  {
+    "navigationBarTitleText": "我的购物车",
+  }
+</script>
+
+
+<style scoped>
+.no-godos-title {
+  padding-top: 300rpx;
+  text-align: center;
+  color: #999;
+  background: url('https://cdn.it120.cc/images/weappshop/icon-cart.png') no-repeat center 180rpx;
+  background-size: 100rpx auto;
+}
+.go-shop-btn {
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 4rpx;
+  margin: 20rpx auto;
+  background-color: red;
+  color: white;
+}
+</style>

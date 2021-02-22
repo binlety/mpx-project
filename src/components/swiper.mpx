@@ -1,24 +1,19 @@
 <template>
-  <view class="container">
-    <view class="page-body">
-      <view class="page-section page-section-spacing swiper">
-        <swiper
-          indicator-dots="{{indicatorDots}}"
-          autoplay="{{autoplay}}"
-          interval="{{interval}}"
-          duration="{{duration}}"
-        >
-          <block wx:for="{{background}}" wx:key="*this">
-            <swiper-item>
-              <!-- <cover-image src="{{item}}"></cover-image> -->
-              <view class="swiper-item {{item}}">{{item}}</view>
-            </swiper-item>
-          </block>
-        </swiper>
-      </view>
-    </view>
-  </view>
+  <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+  >
+    <block wx:for="{{background}}" wx:key="*this">
+      <swiper-item>
+        <!-- <cover-image src="{{item}}"></cover-image> -->
+        <view class="swiper-item {{item}}">{{item}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
 </template>
+
 <script>
 import { createComponent } from '@mpxjs/core'
 

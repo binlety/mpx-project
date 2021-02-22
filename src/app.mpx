@@ -21,13 +21,15 @@ createApp({
       "./pages/goods",
       "./pages/cart",
       "./pages/myself",
-      "./pages/details"
+      "./pages/details",
+      "./pages/home"
     ],
     "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f40",
     "navigationBarTitleText": "mpx之谜",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#eeeeee",
   },
    "tabBar": {
     "list": [{

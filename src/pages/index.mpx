@@ -2,6 +2,7 @@
   <swiper></swiper>
   <menu></menu>
   <list></list>
+  <test></test>
 </template>
 
 <script>
@@ -18,6 +19,7 @@ createPage({
       "swiper": "../components/swiper",
       "menu": "../components/menu",
       "list": "../components/list",
+      "test": "../components/test",
     }
   }
 </script>

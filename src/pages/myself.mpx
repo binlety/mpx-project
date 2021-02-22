@@ -9,6 +9,9 @@ import { createPage } from '@mpxjs/core'
 createPage({
   onLoad() {
     console.log(getCurrentPages()[0].route)
+  },
+  onShow() {
+    console.log(getCurrentPages()[0].route, 'show')
   }
 })
 </script>
@@ -17,6 +20,7 @@ createPage({
   {
     "usingComponents": {
       "map": "../components/map",
-    }
+    },
+    "navigationBarTitleText": "个人信息",
   }
 </script>
