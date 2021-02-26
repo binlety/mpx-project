@@ -1,15 +1,44 @@
 <template>
-  <swiper></swiper>
-  <menu></menu>
-  <list></list>
-  <test></test>
+  <div class="page-container">
+    <swiper></swiper>
+    <menu></menu>
+    <div style="text-align:center;">
+      <cover-image
+        style="width:260rpx;margin:12rpx auto;"
+        src="http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06411246509644693.png"
+      ></cover-image>
+    </div>
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap;">
+      <div
+        wx:for="{{brandList}}"
+        wx:key="index"
+        style="width:25%;margin-top:12rpx;display:flex;justify-content:center;align-items:center;"
+      >
+        <cover-image style="width:80%;" src="{{item}}"></cover-image>
+      </div>
+    </div>
+    <!-- <list></list>
+    <test></test>-->
+  </div>
 </template>
 
 <script>
 import { createPage } from '@mpxjs/core'
 
 createPage({
-  onLoad() {}
+  onLoad() {},
+  data: {
+    brandList: [
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06494325237907839.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06495027191685821.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06633271584275513.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06441440091102934.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06657652643104923.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06531369112926450.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06653315719604180.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06565302359622262.jpg'
+    ]
+  }
 })
 </script>
 
@@ -20,6 +49,13 @@ createPage({
       "menu": "../components/menu",
       "list": "../components/list",
       "test": "../components/test",
-    }
+    },
+    "navigationBarTitleText": "首页",
   }
 </script>
+
+<style scoped>
+.page-container {
+  background-color: #ddd;
+}
+</style>

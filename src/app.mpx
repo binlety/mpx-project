@@ -15,7 +15,7 @@ createApp({
 
 <script type="application/json">
   {
-    // "entryPagePath":"pages/home",
+    "entryPagePath":"pages/home",
     "pages": [
       "./pages/index",
       "./pages/goods",
@@ -26,8 +26,8 @@ createApp({
     ],
     "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#f40",
-    "navigationBarTitleText": "mpx之谜",
+    "navigationBarBackgroundColor": "#42ECEE",
+    "navigationBarTitleText": "mpx启动页",
     "navigationBarTextStyle":"black",
     "backgroundColor": "#eeeeee",
   },

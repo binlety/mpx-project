@@ -1,9 +1,19 @@
-<template>启动页ya</template>
+<template>
+  <cover-image
+    src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3511588860,665857437&fm=26&gp=0.jpg"
+  />
+</template>
 
 <script>
 import { createPage } from '@mpxjs/core'
 
 createPage({
-  onLoad() {}
+  onLoad() {
+    setTimeout(() => {
+      wx.switchTab({
+        url: '/pages/index'
+      })
+    }, 1000)
+  }
 })
 </script>

@@ -1,12 +1,34 @@
 <template>
   <view class="menu">
     <div wx:for="{{menuData}}" wx:key="index" class="menu-item">
-      <div class="menu-item-wrap">
-        <icon type="{{item}}"></icon>
-      </div>
-      <div class="menu-item-wrap">{{item}}</div>
+      <p class="menu-item-wrap">
+        <cover-image src="{{item.url}}" class="menu-item-icon" />
+      </p>
+      <p class="menu-item-wrap">{{item.text}}</p>
     </div>
   </view>
+  <div style="display:flex;">
+    <div style="width:20%;">
+      <cover-image
+        src="http://api.zhaojiafang.com/public/image/icons/index/icon_jiafangtoutiao.jpg"
+      />
+    </div>
+    <div style="width:80%;padding-top:12rpx;">
+      <swiper
+        autoplay="{{autoplay}}"
+        interval="3000"
+        duration="{{duration}}"
+        vertical="true"
+        circular="true"
+        class="swiper2"
+      >
+        <swiper-item>关于清理一批无头件的公告</swiper-item>
+        <swiper-item>一键上传京东功能优化上线</swiper-item>
+        <swiper-item>申通免责公告</swiper-item>
+        <swiper-item>拼多多新品牌招商会</swiper-item>
+      </swiper>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,7 +36,63 @@ import { createComponent } from '@mpxjs/core'
 
 createComponent({
   data: {
-    menuData: ['success', 'info', 'warn', 'waiting', 'cancel', 'download', 'search', 'clear']
+    menuData: [
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_class.png',
+        text: '分类'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_mianliao.png',
+        text: '面料商城'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_maojin.png',
+        text: '高阳毛巾'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_fuwu.png',
+        text: '服务市场'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav_xiangji.png',
+        text: '以图搜款'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_newgoods.png',
+        text: '今日新品'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_pingpaiying.png',
+        text: '品牌店'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_collection.png',
+        text: '我的关注'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_news.png',
+        text: '消息'
+      },
+      {
+        url: 'http://api.zhaojiafang.com/public/image/icons/index/icon_nav1_newcomer.png',
+        text: '新进商家'
+      }
+    ],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500,
+    brandList: [
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06494325237907839.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06495027191685821.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06633271584275513.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06441440091102934.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06657652643104923.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06531369112926450.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06653315719604180.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06565302359622262.jpg'
+    ]
   }
 })
 </script>
@@ -29,12 +107,23 @@ createComponent({
   align-content: center;
 }
 .menu-item {
-  width: 25%;
+  width: 20%;
   height: 60px;
 }
 .menu-item-wrap {
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  text-align: center;
+  display: block;
+  font-size: 22rpx;
+  margin-top: 3rpx;
+  color: #5a5a5a;
+}
+.menu-item-icon {
+  width: 50%;
+  margin: 0 auto;
+}
+.swiper2 {
+  height: 32rpx;
+  overflow: hidden;
+  font-size: 24rpx;
 }
 </style>

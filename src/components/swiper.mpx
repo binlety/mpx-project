@@ -4,11 +4,11 @@
     autoplay="{{autoplay}}"
     interval="{{interval}}"
     duration="{{duration}}"
+    circular="true"
   >
-    <block wx:for="{{background}}" wx:key="*this">
+    <block wx:for="{{bannerList}}" wx:key="*this">
       <swiper-item>
-        <!-- <cover-image src="{{item}}"></cover-image> -->
-        <view class="swiper-item {{item}}">{{item}}</view>
+        <cover-image src="{{item}}"></cover-image>
       </swiper-item>
     </block>
   </swiper>
@@ -19,15 +19,10 @@ import { createComponent } from '@mpxjs/core'
 
 createComponent({
   data: {
-    background: [
-      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06446815665732977.jpg',
-      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06613364330041880.jpg',
-      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06589184942862093.jpg',
-      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06604775582393101.jpg',
-      // 'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06645548035673015.jpg',
-      'demo-text-1',
-      'demo-text-2',
-      'demo-text-3'
+    bannerList: [
+      'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06672180865388560.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06671284272519536.jpg',
+      'http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06675631729760915.jpg'
     ],
     indicatorDots: true,
     vertical: false,
@@ -39,18 +34,10 @@ createComponent({
 </script>
 
 <style lang="css" scoped>
-.swiper-item {
-  height: 150px;
-  line-height: 150px;
-  text-align: center;
+.swiper2 {
+  height: 42rpx;
+  overflow: hidden;
 }
-.demo-text-1 {
-  background: pink;
-}
-.demo-text-2 {
-  background: purple;
-}
-.demo-text-3 {
-  background: lightblue;
+.swiper2 swiper-item {
 }
 </style>
