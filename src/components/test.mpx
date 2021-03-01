@@ -2,6 +2,13 @@
   <view wx:class="{{ {active: bool} }}" bindtap="checkActive">hahah</view>
 </template>
 
+<template name="has">
+  <view>加入购物车</view>
+</template>
+  <template name="no">
+  <view>已售罄</view>
+</template>
+
 <script>
 import { createComponent } from '@mpxjs/core'
 

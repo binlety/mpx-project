@@ -1,4 +1,9 @@
 <template>
+  <div class="userBox">
+    <cover-image class="avatarUrl" src="{{avatarUrl}}"></cover-image>
+    <p class="nickName">{{nickName}}</p>
+  </div>
+
   <view>公司地址：杭州市滨江区滨安路650号IXWork大厦</view>
   <map></map>
 </template>
@@ -7,8 +12,43 @@
 import { createPage } from '@mpxjs/core'
 
 createPage({
+  data: {
+    nickName: '',
+    avatarUrl: ''
+  },
   onLoad() {
     console.log(getCurrentPages()[0].route)
+    var that = this
+    wx.getUserInfo({
+      //获取用户详情
+      success: function(res) {
+        that.setData({
+          nickName: res.userInfo.nickName,
+          avatarUrl: res.userInfo.avatarUrl
+        })
+      }
+    })
+    wx.getLocation({
+      //获取用户当前地理位置
+      type: 'wgs84',
+      success: function(res) {
+        console.log(res, 'getLocati')
+      },
+      fail: function(info) {
+        wx.showToast({
+          title: '当前位置更新失败',
+          icon: 'none'
+        })
+      }
+    })
+    //扫码功能
+    // wx.scanCode({
+    //   success: res => {
+    //     wx.showToast({
+    //       title: res.errMsg
+    //     })
+    //   }
+    // })
   },
   onShow() {
     console.log(getCurrentPages()[0].route, 'show')
@@ -24,3 +64,22 @@ createPage({
     "navigationBarTitleText": "个人信息",
   }
 </script>
+
+<style scoped>
+.userBox {
+  width: 100%;
+  padding-bottom: 40%;
+}
+.avatarUrl {
+  width: 80%;
+  width: 150rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+.userBox .nickName {
+  display: block;
+  text-align: center;
+  margin: 12rpx;
+}
+</style>

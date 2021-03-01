@@ -1,6 +1,24 @@
 <template>
+  <video
+    style="display:block;width:100%;"
+    autoplay="{{false}}"
+    src="https://vd3.bdstatic.com/mda-kigx3f6937z2nuf8/v1-cae/mda-kigx3f6937z2nuf8.mp4?v_from_s=hba_videoui_4135&auth_key=1614566486-0-0-f6bab94b5828873ad956d5e1165e3509&bcevod_channel=searchbox_feed&pd=1&pt=3&abtest=8_2"
+  ></video>
   <view>{{name}}</view>
-  <test></test>
+  <div style="display:flex;justify-content:space-around;">
+    <p class="numsBox">
+      收藏：
+      <span>3221</span>
+    </p>
+    <p class="numsBox">
+      库存：
+      <span>102</span>
+    </p>
+    <p class="numsBox">
+      月销：
+      <span>96</span>
+    </p>
+  </div>
 </template>
 
 <script>
@@ -20,9 +38,15 @@ createPage({
 
 <script type="application/json">
   {
-    "usingComponents": {
-      "test": "../components/test",
-    },
+    // "usingComponents": {
+    //   "test": "../components/test",
+    // },
      "navigationBarTitleText": "商品详情",
   }
 </script>
+
+<style scoped>
+.numsBox {
+  font-size: 22rpx;
+}
+</style>

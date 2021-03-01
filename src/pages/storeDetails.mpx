@@ -1,0 +1,24 @@
+<template>
+  <view>欢迎来到 {{storeName}} 店铺！</view>
+</template>
+
+<script>
+import { createPage } from '@mpxjs/core'
+
+createPage({
+  data: {
+    title: ''
+  },
+  onLoad(option) {
+    this.setData({
+      storeName: option.name
+    })
+  }
+})
+</script>
+
+<script type="application/json">
+  {
+     "navigationBarTitleText": "店铺主页",
+  }
+</script>

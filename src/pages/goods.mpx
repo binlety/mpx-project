@@ -1,9 +1,167 @@
-<template>goods</template>
+<template>
+  <block wx:for="{{goodsList}}" wx:key="{{index}}">
+    <div class="goodsBox">
+      <cover-image class="avatarUrl" style="width:20%;" src="{{item.src}}"></cover-image>
+      <view style="width:80%;padding:6rpx 22rpx;">
+        <p>店铺：{{item.storeName}}</p>
+        <view class="goodsName">商品：{{item.goodsName}}</view>
+        <p>
+          价格：
+          <span style="color:red;">￥{{item.price}}</span>
+        </p>
+        <component
+          is="{{(item.storage ? 'has' : 'no')}}"
+          style="float:right;margin-right:12rpx;"
+          bindtap="handleClick(item)"
+        />
+      </view>
+    </div>
+  </block>
+</template>
 
 <script>
 import { createPage } from '@mpxjs/core'
 
 createPage({
-  onLoad() {}
+  onLoad() {},
+  onShow() {
+    console.log(this.globalData, 'this.globalData')
+  },
+  handleClick(obj) {
+    if (obj.storage) {
+      wx.getStorage({
+        key: 'cartList',
+        success(res) {
+          let bool = true
+          res.data.map(item => {
+            if (item.storeName == obj.storeName) {
+              item.data.map((child, index, arr) => {
+                arr[index].nums += 1
+                bool = false
+              })
+            }
+          })
+          if (bool) {
+            res.data.push({ storeName: obj.storeName, data: [{ ...obj }] })
+          }
+          wx.setStorage({ key: 'cartList', data: [...res.data] })
+        },
+        fail(err) {
+          wx.setStorage({
+            key: 'cartList',
+            data: [{ storeName: obj.storeName, data: [{ ...obj }] }]
+          })
+        }
+      })
+      wx.switchTab({
+        url: '/pages/cart'
+      })
+    } else {
+      wx.showModal({
+        title: '当前商品已售罄，是否通知商家补货',
+        // confirmText: '通知并提醒',
+        success() {
+          wx.showLoading({})
+          const timer = setTimeout(() => {
+            wx.hideLoading({})
+            wx.showToast({ title: '补货通知成功' })
+            clearTimeout(timer)
+          }, 2000)
+        }
+      })
+    }
+  },
+
+  data: {
+    goodsList: [
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/8827/8827_QN06495068204539588.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        storeName: 'A',
+        goodsName: 'A1',
+        storage: 32,
+        price: 22
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/10117/10117_QN06640256886507011.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        storeName: 'A',
+        goodsName: 'A2',
+        storage: 32,
+        price: 22
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/7837/7837_QN06475388876946267.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        storeName: 'B',
+        goodsName: 'B1',
+        storage: 0,
+        price: 22
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/2023/2023_QN06451201214620709.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        storeName: 'B',
+        goodsName: 'B2',
+        storage: 32,
+        price: 22
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/6991/6991_QN06501277105057398.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        storeName: 'B',
+        goodsName: 'B3',
+        storage: 32,
+        price: 22
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/8827/8827_QN06495068204539588.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        storeName: 'C',
+        goodsName: 'C1',
+        storage: 0,
+        price: 22
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/6391/6391_QN06385320382142106.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        storeName: 'C',
+        goodsName: 'C2',
+        storage: 32,
+        price: 22
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/6991/6991_QN06504892821873942.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        storeName: 'C',
+        goodsName: 'C3',
+        storage: 32,
+        price: 22
+      }
+    ]
+  }
 })
 </script>
+
+<script type="application/json">
+  {
+     "navigationBarTitleText": "找好货",
+      "usingComponents": {
+      "has": "../components/has",
+      "no": "../components/no"
+    }
+  }
+</script>
+
+<style scoped>
+.goodsBox {
+  display: flex;
+  padding: 6rpx 4rpx;
+  border-bottom: 1px solid #ccc;
+  font-size: 26rpx;
+}
+
+.goodsName {
+  margin: 12rpx auto;
+}
+</style>

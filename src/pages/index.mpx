@@ -17,6 +17,30 @@
         <cover-image style="width:80%;" src="{{item}}"></cover-image>
       </div>
     </div>
+    <div style="text-align:center;">
+      <cover-image
+        style="width:260rpx;margin:24rpx auto 12rpx;"
+        src="http://qiniu.zhaojiafang.com/data/upload/shop/adv/QN06516009735321423.png"
+      ></cover-image>
+    </div>
+    <div style="display:flex;justify-content:space-around;flex-wrap:wrap;">
+      <div
+        wx:for="{{recommendGoods}}"
+        wx:key="index"
+        style="width:50%;margin-top:12rpx;display:flex;flex-direction:column;"
+      >
+        <cover-image style="width:90%;margin:0 auto;border-radius:8rpx;" src="{{item.src}}"></cover-image>
+
+        <navigator url="../pages/details?name={{item.goodsName}}" open-type="navigate">
+          <p class="goodsName">{{item.goodsName}}</p>
+        </navigator>
+        <navigator url="../pages/storeDetails?name={{item.storeName}}" open-type="navigate">
+          <span class="storeName">{{item.storeName}}</span>
+        </navigator>
+
+        <p class="price">￥{{item.price}}</p>
+      </div>
+    </div>
     <!-- <list></list>
     <test></test>-->
   </div>
@@ -37,6 +61,36 @@ createPage({
       'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06531369112926450.jpg',
       'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06653315719604180.jpg',
       'http://qiniu.zhaojiafang.com/data/upload/mobile/special/s0/s0_QN06565302359622262.jpg'
+    ],
+    recommendGoods: [
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/1951/1951_QN06653321756780193.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        goodsName: '2020新款纯棉北欧风小清新全棉印花四件套 1.2m床单款三件套 彩虹',
+        storeName: '田野家纺',
+        price: 95
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/3043/3043_QN06672538915048299.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        goodsName: '全棉平网系列四件套 床单款1.2m被套160*210 恐龙游记',
+        storeName: '米帛床垫',
+        price: 35
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/7657/7657_QN06676554990630158.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        goodsName: '木果枕芯 新品蚕蛹蛋白羽丝绒高弹枕芯 护颈枕头 蚕蛹蛋白羽丝绒枕',
+        storeName: '苏米娜家纺',
+        price: 5
+      },
+      {
+        src:
+          'http://imgniu.zhaojiafang.com/store/goods/7543/7543_QN06675689059247599.jpg?imageView2/1/w/300/h/300/ignore-error/1/',
+        goodsName: '英伦风全棉彩条羽丝枕 枕芯 枕头全棉枕芯 全棉彩条枕灰色双边低枕',
+        storeName: 'vip被业',
+        price: 135
+      }
     ]
   }
 })
@@ -57,5 +111,30 @@ createPage({
 <style scoped>
 .page-container {
   background-color: #ddd;
+}
+.goodsName {
+  display: block;
+  padding: 8rpx 12rpx;
+  font-size: 22rpx;
+}
+
+.storeName {
+  width: 180rpx;
+  display: block;
+  height: 44rpx;
+  line-height: 44rpx;
+  margin: 8rpx auto;
+  border-radius: 22rpx;
+  background-color: #fce7e2;
+  color: #ff2d51;
+  text-align: center;
+  font-size: 22rpx;
+}
+.price {
+  font-weight: 600;
+  color: #ff2d51;
+  display: block;
+  text-align: center;
+  font-size: 26rpx;
 }
 </style>
