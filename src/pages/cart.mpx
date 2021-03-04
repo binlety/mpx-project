@@ -1,9 +1,9 @@
 
   <template>
   <block wx:if="{{cartList.length}}">
-    <view wx:for="{{cartList}}">
+    <view wx:for="{{cartList}}" wx:key="{{index}}">
       <view style="background:#ddd;">店铺名称：{{item.storeName}}</view>
-      <view wx:for="{{item.data}}" wx:for-item="child">
+      <view wx:for="{{item.data}}" wx:for-item="child" wx:key="{{index}}">
         <div class="goodsBox">
           <cover-image class="avatarUrl" style="width:20%;" src="{{child.src}}"></cover-image>
           <view style="width:80%;padding:6rpx 22rpx;">
@@ -12,6 +12,7 @@
               价格：
               <span style="color:red;">￥{{child.price}}</span>
             </p>
+            <view>数量：{{child.nums}}</view>
           </view>
         </div>
       </view>
@@ -43,21 +44,7 @@ createPage({
     wx.getStorage({
       key: 'cartList',
       success(res) {
-        console.log(res.data)
         that.setData({ cartList: res.data })
-        // let bool = true
-        // res.data.map(item => {
-        //   if (item.storeName == obj.storeName) {
-        //     item.data.map((child, index, arr) => {
-        //       arr[index].nums += 1
-        //       bool = false
-        //     })
-        //   }
-        // })
-        // if (bool) {
-        //   res.data.push({ storeName: obj.storeName, data: [...obj] })
-        // }
-        // wx.setStorage({ key: 'cartList', data: [...res.data] })
       },
       fail(err) {}
     })
